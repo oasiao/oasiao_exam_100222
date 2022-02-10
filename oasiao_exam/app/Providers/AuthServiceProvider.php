@@ -26,13 +26,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-       /* Gate::define('isAuthor', function($user) {
+/*       Gate::define('isAuthor', function($user,$post) {
 
-            //cogemos el autor de la publicación
-            $author = Post::where('id',$user->id)->first();
-            //comprobamos que la publicación es del user loggeado
-            return $user->id == ;
-
+            return $user->id == $post->user_id;
         });*/
     }
 }

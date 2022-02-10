@@ -1,7 +1,9 @@
 @extends('layout')
-@section('title','Create')
+@section('title','Edit')
 @section('content')
-    @if( $errors->any())
+{{--    @can('isAuthor')--}}
+
+        @if( $errors->any())
         <div class="text-danger">
             @foreach( $errors->all() as $e)
                 <li style="list-style:none">{{ $e }}</li>
@@ -50,5 +52,5 @@
             </div>
         </div>
     </div>
-
+{{--    @endcan--}}
 @endsection

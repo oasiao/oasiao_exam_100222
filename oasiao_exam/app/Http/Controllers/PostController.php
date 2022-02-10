@@ -7,6 +7,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -72,8 +73,14 @@ class PostController extends Controller
      */
     public function edit($id)
     {
+        $user = Auth::user();
         $currentPost = Post::find($id);
-        return view('posts.edit', ['post' => $currentPost]);
+/*        if (Gate::forUser($user)->denies('update-post', $currentPost)) {
+            // The user can't update the post...
+            abort(403);
+        }
+        else{*/
+            return view('posts.edit', ['post' => $currentPost]);
     }
 
     /**
