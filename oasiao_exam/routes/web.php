@@ -25,3 +25,6 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::resource('/posts',PostController::class);
+
+/*LANG ROUTE*/
+Route::get('/posts/create/{lang?}',[PostController::class,'create']);
