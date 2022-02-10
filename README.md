@@ -19,3 +19,6 @@ DB_PORT=5432
 DB_DATABASE=oasiao_exam_10/02/22
 DB_USERNAME=oasiao_usr
 DB_PASSWORD=abc123.
+
+# SOPORTE MULTILINGÜE 
+En el formulario CREAR!! 
