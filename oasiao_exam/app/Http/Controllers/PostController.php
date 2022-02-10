@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
+use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -13,7 +17,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        return view('posts.index',['posts'=>$posts]);
     }
 
     /**
@@ -21,9 +26,11 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($lang = 'en')
     {
-        //
+        App::setLocale($lang);
+        session($lang);
+        return view('posts.create');
     }
 
     /**
@@ -32,9 +39,18 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //
+        Post::create([
+            'title' => $request->input('title'),
+            'extract' => $request->input('extract'),
+            'content' => $request->input('content'),
+            'access' => $request->input('access'),
+            'publication' => $request->input('publication'),
+            'user_id' => Auth::user()->id
+        ]);
+
+        return redirect('/posts');
     }
 
     /**
