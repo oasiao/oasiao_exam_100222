@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Post;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -25,6 +26,13 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+       /* Gate::define('isAuthor', function($user) {
+
+            //cogemos el autor de la publicación
+            $author = Post::where('id',$user->id)->first();
+            //comprobamos que la publicación es del user loggeado
+            return $user->id == ;
+
+        });*/
     }
 }

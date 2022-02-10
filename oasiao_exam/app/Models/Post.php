@@ -11,4 +11,8 @@ class Post extends Model
     protected $table = 'posts';
     protected $primaryKey = 'id';
     protected $fillable = ['title','extract','content','access','publication','user_id'];
+
+    public function post_user(){
+        return $this->belongsTo(User::class);
+    }
 }
