@@ -21,8 +21,8 @@
                             <tr>
                                 <th>Action</th>
                                 <th>#</th>
-                                <th>User</th>
                                 <th>Title</th>
+                                <th>User</th>
                                 <th>Extract</th>
                                 <th>Content</th>
                                 <th>Access</th>
@@ -47,8 +47,8 @@
                                         </ul>
                                     </td>
                                     <td><a href="/posts/{{ $post->id }}">{{ $post->id }}</a></td>
-                                    <td><a href="#"> {{ $post->user_id }} </a></td>
                                     <td>{{ $post->title }}</td>
+                                    <td>{{ $post->user_id }}</td>
                                     <td>{{ $post->extract }}</td>
                                     <td>{{ $post->content}}</td>
                                     <td>{{ $post->access}}</td>

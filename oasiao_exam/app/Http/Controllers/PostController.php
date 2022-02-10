@@ -72,7 +72,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $currentPost = Post::find($id);
+        return view('posts.edit', ['post' => $currentPost]);
     }
 
     /**
@@ -84,7 +85,15 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Post::where('id',$id)->update([
+            'title' => $request->input('title'),
+            'extract' => $request->input('extract'),
+            'content' => $request->input('content'),
+            'access' => $request->input('access'),
+            'publication' => $request->input('publication'),
+        ]);
+
+        return redirect('/posts');
     }
 
     /**
@@ -95,6 +104,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::where('id', $id)->first();
+        $post->delete();
+
+        return redirect('/posts');
     }
 }
